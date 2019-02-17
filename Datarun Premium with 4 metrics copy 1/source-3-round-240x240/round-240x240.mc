@@ -11,7 +11,7 @@ class DeviceView extends PowerView {
 	function onUpdate(dc) {
 		//! call the parent function in order to execute the logic of the parent
 		PowerView.onUpdate(dc);
-        
+                
 		//! Conditions for showing the demoscreen       
         if (uShowDemo == false) {
         	if (licenseOK == false && jTimertime > 900)  {
@@ -25,20 +25,27 @@ class DeviceView extends PowerView {
 		//! Draw separator lines
         dc.setColor(mColourLine, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
+
         dc.drawLine(0, 120,  240, 120);
-        dc.drawLine(120, 29,  120, 214);
+        dc.drawLine(120, 29,  120, 120);
 
         //! Bottom horizontal divider
         dc.drawLine(45, 214, 195, 214);
 
         //! Top horizontal divider
-        dc.drawLine(33, 29, 207, 29);		
+        dc.drawLine(33, 29, 207, 29);	
+		
+        //! Centre vertical dividers. Don't display dividers, if there is a workout notification
+		if (hideDiv == false) {
+			dc.drawLine(120, 120,  120, 214);
+		}
+      
 
 		//! Display metrics
-		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 
 		//! Show number of laps or clock with current time in top
-		if (uShowlaps == false) {
+		if (uMilClockAltern == 0) {		
 			var myTime = Toybox.System.getClockTime(); 
 	    	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
 			dc.drawText(120, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
@@ -68,7 +75,7 @@ class DeviceView extends PowerView {
 		dc.setColor(mColourBackGround, Graphics.COLOR_TRANSPARENT);
 		var Startstatuspwrbr = 94 + pwr*0.5  ;
 		var Endstatuspwrbr = 50 - pwr*0.5 ;
-		dc.fillRectangle(Startstatuspwrbr, 221, Endstatuspwrbr, 11);	
+		dc.fillRectangle(Startstatuspwrbr, 221, Endstatuspwrbr, 11);		
 
 	   } else {
 	   //! Display demo screen
@@ -91,6 +98,8 @@ class DeviceView extends PowerView {
 			dc.drawText(161, 178, Graphics.FONT_NUMBER_MEDIUM, ID2, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(120, 215, Graphics.FONT_XTINY, "Version " + appversion, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
       	}
-	   }  
+	   }
+	   
 	}
+
 }
