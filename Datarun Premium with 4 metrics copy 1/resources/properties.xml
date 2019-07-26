@@ -1,7 +1,8 @@
 <resources>
-
+    	<font id="Garmin1" filename="fonts/Roadway73-alleencijfers.fnt" antialias="true"/>
+    	<font id="Garmin2" filename="fonts/Roadway53-alleencijfers.fnt" antialias="true"/>   	
   <properties>
-    <property id="pAppversion" type="string">1.99</property>
+    <property id="pAppversion" type="string">2.08</property>
     <property id="pUpperLeftMetric" type="number">0</property>
     <property id="pUpperRightMetric" type="number">4</property>
     <property id="pMiddleLeftMetric" type="number">45</property>    
@@ -36,6 +37,7 @@
     <property id="pCP" type="number">250</property>
     <property id="pspikeTreshold" type="number">2000</property>
     <property id="pLapPwr4alerts" type="boolean">false</property>
+    <property id="pNoLapEffect" type="boolean">false</property>
   </properties>
 
 	
@@ -45,8 +47,8 @@
     <!-- Beta name:
     <string id="AppName">Datarun premium with 4 metrics, copy 1</string>
     -->
-    <string id="AppVersion">1.99</string>
-    <string id="lDummysetting4version">Version 1.99 of Datarun premium with 4 metrics, copy 1 (dummy setting)</string>
+    <string id="AppVersion">2.08</string>
+    <string id="lDummysetting4version">Version 2.08 of Datarun premium with 4 metrics, copy 1 (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
@@ -171,6 +173,7 @@
     <string id="lAP2HRratio">Average power to heartrate ratio</string>
 	<string id="lSPowerzone">Current powerzone</string>
 	<string id="lspikeTreshold">Treshhold value for supressing power spikes</string>
+	<string id="lNoLapEffect">Disable the effect of a manual lap or an Autolap on displayed lap values</string>
  </strings>
 
   <settings>
@@ -191,6 +194,9 @@
     </setting>
     <setting propertyKey="@Properties.pCCnumber" title="@Strings.lCCnumber">
         <settingConfig type="numeric" errorMessage="@Strings.MyNumberError" />
+    </setting>
+    <setting propertyKey="@Properties.pNoLapEffect" title="@Strings.lNoLapEffect">
+      <settingConfig type="boolean" required="false" />
     </setting>
     <setting propertyKey="@Properties.pRoundedPace" title="@Strings.lRoundedPace">
       <settingConfig type="boolean" required="true" />

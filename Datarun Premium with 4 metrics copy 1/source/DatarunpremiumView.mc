@@ -1,5 +1,4 @@
 using Toybox.WatchUi as Ui;
-using Toybox.System as Sys;
 
 class DatarunPremiumwith4metricscopy1App extends Toybox.Application.AppBase {
     function initialize() {
@@ -13,8 +12,6 @@ class DatarunPremiumwith4metricscopy1App extends Toybox.Application.AppBase {
 }
 
 class DatarunpremiumView extends Ui.DataField {
-	hidden var stats = Sys.getSystemStats();
-	hidden var pwr = stats.battery;
 	hidden var appversion = "1.00";
 
 	//!Get device info
@@ -107,6 +104,8 @@ class DatarunpremiumView extends Ui.DataField {
 	hidden var LastLapHeartrate				= 0;
 	hidden var AverageHeartrate 			= 0; 
 	hidden var mLapElapsedDistance 			= 0;
+	hidden var NoLapEffect					= false;
+	
 
     function initialize() {
          DataField.initialize();
@@ -128,6 +127,7 @@ class DatarunpremiumView extends Ui.DataField {
          uRacedistance		 = mApp.getProperty("pRacedistance");
          uRacetime			 = mApp.getProperty("pRacetime");
          appversion 		 = mApp.getProperty("pAppversion");
+         NoLapEffect 		 = mApp.getProperty("pNoLapEffect");	
          var uHrZones = UserProfile.getHeartRateZones(UserProfile.getCurrentSport());
 	 
         if (System.getDeviceSettings().paceUnits == System.UNIT_STATUTE) {

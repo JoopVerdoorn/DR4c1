@@ -1,4 +1,6 @@
 using Toybox.Math;
+using Toybox.WatchUi as Ui;
+
 class CiqView extends ExtramemView {  
 	var mfillColour 						= Graphics.COLOR_LT_GRAY;
 	var counterPower 						= 0;
@@ -48,7 +50,10 @@ class CiqView extends ExtramemView {
 	var fieldvalue;
 	var WU;
 	hidden var uLapPwr4alerts 				= false;
-		
+	var Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);
+	var Garminfontklein = Ui.loadResource(Rez.Fonts.Garmin2);
+	
+			
     function initialize() {
         ExtramemView.initialize();
 		var mApp 		 = Application.getApp();
@@ -67,7 +72,8 @@ class CiqView extends ExtramemView {
 			if (metric[i] == 57 or metric[i] == 58 or metric[i] == 59) {
 				rolavPowmaxsecs = (rolavPowmaxsecs < 30) ? 30 : rolavPowmaxsecs;
 			}
-		}		
+		}
+		Garminfont = (ID0 == 3624 or ID0 == 3588 or ID0 == 3762 or ID0 == 3761 or ID0 == 3757 or ID0 == 3758 or ID0 == 3759) ? Ui.loadResource(Rez.Fonts.Garmin1) : Graphics.FONT_NUMBER_HOT;		
 		
 		//!Workout variables setup
 		if (uWorkoutType == 2) { 			//! Set up powerbased workout with timers
@@ -238,23 +244,25 @@ class CiqView extends ExtramemView {
 
     //! Store last lap quantities and set lap markers after a lap
     function onTimerLap() {
-        var info = Activity.getActivityInfo();
-        mLastLapTimerTime       	= jTimertime - mLastLapTimeMarker;
-        mLastLapElapsedDistance 	= (info.elapsedDistance != null) ? info.elapsedDistance - mLastLapDistMarker : 0;
-        mLastLapDistMarker      	= (info.elapsedDistance != null) ? info.elapsedDistance : 0;
-        mLastLapTimeMarker      	= jTimertime;
+    	if (NoLapEffect == false) {
+	        var info = Activity.getActivityInfo();
+    	    mLastLapTimerTime       	= jTimertime - mLastLapTimeMarker;
+        	mLastLapElapsedDistance 	= (info.elapsedDistance != null) ? info.elapsedDistance - mLastLapDistMarker : 0;
+	        mLastLapDistMarker      	= (info.elapsedDistance != null) ? info.elapsedDistance : 0;
+    	    mLastLapTimeMarker      	= jTimertime;
 
-        mLastLapTimerTimeHR			= mHeartrateTime - mLastLapTimeHRMarker;
-        mLastLapElapsedHeartrate 	= (info.currentHeartRate != null) ? mElapsedHeartrate - mLastLapHeartrateMarker : 0;
-        mLastLapHeartrateMarker     = mElapsedHeartrate;
-        mLastLapTimeHRMarker        = mHeartrateTime;
+        	mLastLapTimerTimeHR			= mHeartrateTime - mLastLapTimeHRMarker;
+	        mLastLapElapsedHeartrate 	= (info.currentHeartRate != null) ? mElapsedHeartrate - mLastLapHeartrateMarker : 0;
+    	    mLastLapHeartrateMarker     = mElapsedHeartrate;
+        	mLastLapTimeHRMarker        = mHeartrateTime;
 
-        mLastLapTimerTimePwr		= mPowerTime - mLastLapTimePwrMarker;
-        mLastLapElapsedPower  		= (info.currentPower != null) ? mElapsedPower - mLastLapPowerMarker : 0;
-        mLastLapPowerMarker         = mElapsedPower;
-        mLastLapTimePwrMarker       = mPowerTime;        
+	        mLastLapTimerTimePwr		= mPowerTime - mLastLapTimePwrMarker;
+    	    mLastLapElapsedPower  		= (info.currentPower != null) ? mElapsedPower - mLastLapPowerMarker : 0;
+        	mLastLapPowerMarker         = mElapsedPower;
+	        mLastLapTimePwrMarker       = mPowerTime;        
 
-        mLaps++;
+    	    mLaps++;
+    	}
 	}
 
 
@@ -611,12 +619,12 @@ class CiqView extends ExtramemView {
             		fTimer = (fieldvalue / 60 % 60).format("%02d") + ":" + fTimerSecs;  
         		}
         		if (hideText == false) {
-        			dc.drawText(xx, y, Graphics.FONT_NUMBER_MEDIUM, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        			dc.drawText(xx, y, Garminfontklein, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         		}	
         	}
         } else {
         	if (hideText == false) {
-        		dc.drawText(x, y, Graphics.FONT_NUMBER_HOT	, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        		dc.drawText(x, y, Garminfont , fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         	}
         }        
         if (hideText == false) {
