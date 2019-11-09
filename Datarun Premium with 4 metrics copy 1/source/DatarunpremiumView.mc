@@ -32,9 +32,9 @@ class DatarunpremiumView extends Ui.DataField {
 	hidden var mtest = 63869733;
 	hidden var jTimertime = 0;
 	
-	hidden var fieldValue = [1, 2, 3, 4, 5, 6, 7, 8];
-	hidden var fieldLabel = [1, 2, 3, 4, 5, 6, 7, 8];
-	hidden var fieldFormat = [1, 2, 3, 4, 5, 6, 7, 8];	
+	hidden var fieldValue = [1, 2, 3, 4, 5];
+	hidden var fieldLabel = [1, 2, 3, 4, 5];
+	hidden var fieldFormat = [1, 2, 3, 4, 5];	
 
     var Averagespeedinmper3sec 			= 0;
     var Averagespeedinmper5sec 			= 0;
@@ -100,6 +100,7 @@ class DatarunpremiumView extends Ui.DataField {
     hidden var mLapTimerTimeHR				= 0;    
 	hidden var mLastLapTimeHRMarker			= 0;
 	hidden var mLastLapTimerTimeHR			= 0;
+	hidden var currentHR					= 0;
 	hidden var LapHeartrate					= 0;
 	hidden var LastLapHeartrate				= 0;
 	hidden var AverageHeartrate 			= 0; 
@@ -260,8 +261,9 @@ class DatarunpremiumView extends Ui.DataField {
         mRacetime = mRacehour*3600 + mRacemin*60 + mRacesec;
 
 		//!Fill field metrics
+		currentHR = (info.currentHeartRate != null) ? info.currentHeartRate : 0;
 		var i = 0; 
-	    for (i = 1; i < 8; ++i) {	    
+	    for (i = 1; i < 5; ++i) {	    
         	if (metric[i] == 0) {
             	fieldValue[i] = jTimertime;
             	fieldLabel[i] = "Timer";
@@ -366,7 +368,7 @@ class DatarunpremiumView extends Ui.DataField {
 		       	fieldLabel[i] = "Altitude";
 		       	fieldFormat[i] = "0decimal";        		
         	} else if (metric[i] == 45) {
-    	        fieldValue[i] = (info.currentHeartRate != null) ? info.currentHeartRate : 0;
+    	        fieldValue[i] = currentHR;
         	    fieldLabel[i] = "HR";
             	fieldFormat[i] = "0decimal";
 			}
