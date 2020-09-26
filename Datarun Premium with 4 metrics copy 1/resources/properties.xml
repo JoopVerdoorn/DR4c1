@@ -8,7 +8,7 @@
   <properties>
     <property id="pWeight" type="number">70</property>
     <property id="pGarminColors" type="boolean">false</property>
-    <property id="pAppversion" type="string">2.23</property>
+    <property id="pAppversion" type="string">2.23b</property>
     <property id="pUpperLeftMetric" type="number">0</property>
     <property id="pUpperRightMetric" type="number">4</property>
     <property id="pMiddleLeftMetric" type="number">45</property>    
@@ -57,9 +57,9 @@
     <!-- Beta name:
     <string id="AppName">Datarun premium with 4 metrics, copy 1</string>
     -->
-    <string id="AppVersion">2.23</string>
-    <string id="lDummysetting4version">Version 2.23 of Datarun premium with 4 metrics, copy 1 (dummy setting)</string>
-	<string id="AppVersion">2.23</string>
+    <string id="AppVersion">2.23b</string>
+    <string id="lDummysetting4version">Version 2.23b of Datarun premium with 4 metrics, copy 1 (dummy setting)</string>
+	<string id="AppVersion">2.23b</string>
     <string id="l3secPowerzone">Powerzone over the last 3 seconds</string>
 	<string id="l5secPowerzone">Powerzone over the last 5 seconds</string>
 	<string id="l10secPowerzone">Powerzone over the last 10 seconds</string>
@@ -74,7 +74,7 @@
     <string id="lAverRE">Average Running Effectiveness (as used by Steve Palladino)</string>
     <string id="lTemp">Current temperature</string>
 	<string id="lGarminColors">Use Garmin color scheme for label colors (not applicable for Palladino 10 powerzones)</string>
-    <string id="lDummysetting4version">Version 2.23 of Datarun premium with 6 metrics, copy 1 (dummy setting)</string>
+    <string id="lDummysetting4version">Version 2.23b of Datarun premium with 6 metrics, copy 1 (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
