@@ -34,10 +34,7 @@ class DeviceView extends PowerView {
         dc.setPenWidth(2);
 
         dc.drawLine(0, 130,  260, 130);
-        dc.drawLine(130, 31,  130, 130);
-		if (hideDiv == false) {
-			dc.drawLine(130, 130,  130, 232);
-		}
+        dc.drawLine(130, 31,  130, 232);
 
         //! Bottom horizontal divider
         dc.drawLine(49, 232, 211, 232);
@@ -67,13 +64,6 @@ class DeviceView extends PowerView {
 	       	}    	       	 	
 		}
 		
-//!		if (jTimertime == 0) {
-//!	    	if (ID0 != 3624 and ID0 != 3588 and ID0 != 3762 and ID0 != 3761 and ID0 != 3757 and ID0 != 3758 and ID0 != 3759) {
-//!		    	dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-//!				dc.drawText(120, 102, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
-//!		    }
-//!		}
-		
 		//! Bottom battery indicator
 	 	var stats = Sys.getSystemStats();
 		var pwr = stats.battery;
@@ -92,7 +82,7 @@ class DeviceView extends PowerView {
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 	
 		if (licenseOK == true) {
-      		dc.drawText(130, 40, Graphics.FONT_XTINY, "Datarun prem 4m c1", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+      		dc.drawText(130, 40, Graphics.FONT_XTINY, "DR4c1", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
       		dc.drawText(130, 70, Graphics.FONT_XTINY, "Version " + appversion, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(130, 120, Graphics.FONT_TINY, "Registered !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(81, 160, Graphics.FONT_XTINY, "License code: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
@@ -106,7 +96,7 @@ class DeviceView extends PowerView {
 			dc.drawText(161, 149, Graphics.FONT_NUMBER_MEDIUM, ID1, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(60, 205, Graphics.FONT_MEDIUM, "ID 2: " , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(161, 199, Graphics.FONT_NUMBER_MEDIUM, ID2, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-      	}
+			}
 	   }
 	   
 	}
